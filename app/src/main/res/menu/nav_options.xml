@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/optionHome"
+            android:icon="@drawable/outline_home_black_18"
+            android:title="Inicio"/>
+
+        <item
+            android:id="@+id/optionJournal"
+            android:icon="@drawable/outline_menu_book_black_18"
+            android:title="Journal"/>
+
+    </group>
+    <item android:title="My Sneaker City">
+        <menu>
+    <item
+        android:id="@+id/optionJordan"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Jordan"/>
+
+    <item
+        android:id="@+id/optionNike"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Nike"/>
+
+    <item
+        android:id="@+id/optionYeezy"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Jordan"/>
+
+    <item
+        android:id="@+id/optionAdidas"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Adidas"/>
+
+    <item
+        android:id="@+id/optionWomen"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Women"/>
+
+    <item
+        android:id="@+id/optionKids"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Kids"/>
+
+    <item
+        android:id="@+id/optionApparel"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Apparel"/>
+
+    <item
+        android:id="@+id/optionStadium"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Stadium Goods"/>
+
+    <item
+        android:id="@+id/optionAllBrands"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="All Brands"/>
+
+    <item
+        android:id="@+id/optionShopBy"
+        android:icon="@drawable/outline_chevron_right_black_18"
+        android:title="Shop By"/>
+
+        </menu>
+
+    </item>
+
+
+</menu>

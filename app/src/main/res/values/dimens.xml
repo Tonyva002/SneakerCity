@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_margin_min">8dp</dimen>
+    <dimen name="common_margin_middle">24dp</dimen>
+    <dimen name="common_margin_default">16dp</dimen>
+    <dimen name="common_margin_big">50dp</dimen>
+    <dimen name="common_margin_bigx">80dp</dimen>
+
+    <dimen name="common_padding_min">8dp</dimen>
+    <dimen name="common_padding_default">16dp</dimen>
+    <dimen name="common_padding_middle">24dp</dimen>
+    <dimen name="common_padding_big">32dp</dimen>
+
+    <dimen name="common_text_size_default">16sp</dimen>
+    <dimen name="common_text_size_middle">24sp</dimen>
+    <dimen name="common_text_size_big">40sp</dimen>
+
+    <dimen name="common_image_size_default">120dp</dimen>
+    <dimen name="common_radius_middle">24dp</dimen>
+    <dimen name="common_item_card_height">150dp</dimen>
+    <dimen name="common_button_height">60dp</dimen>
+
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/drawable/button_rounded.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/drawable/circular_image.xml" value="0.2225" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/drawable/ic_drawer_menu.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1735" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/drawable/states_cb_favorite.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_card.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_cart.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_invoice.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_invoice_address.xml" value="0.264" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_invoice_addressctivity.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_invoice_shipping_address.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_pay.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_payment_shipping.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_register.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_shipping_address.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_shopping_cart.xml" value="0.10572916666666667" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_user.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_user_address.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_user_shipping_address.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_way_pay.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/activity_way_to_pay.xml" value="0.13627152988855115" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/cart_adapter.xml" value="0.264" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/header_navigation_drawer.xml" value="0.18070652173913043" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/invoice_address_adapter.xml" value="0.11944444444444445" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/invoice_shipping_address_adapter.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/item_recyclerview.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/product_adapter.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/shipping_address_adapter.xml" value="0.176" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/toolbar.xml" value="0.18070652173913043" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/user_shipping_address_adapter.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/way_pay_adapter.xml" value="0.1485148514851485" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/layout/way_to_pay_adapter.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/menu/menu_options.xml" value="0.28020833333333334" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/menu/menu_options2.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/menu/nav_options.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java Projects/SneakerCity/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1305" />
+        <entry key="..\:/Users/DELL/Desktop/Android Java/SneakerCity/app/src/main/res/layout/activity_login.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

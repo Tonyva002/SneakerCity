@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardProduct"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/common_margin_min"
+    android:layout_marginHorizontal="@dimen/common_margin_min">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imgPhoto"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/description_image_photo"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@drawable/states_cb_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="@dimen/common_padding_default"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/imgPhoto">
+
+          <TextView
+              android:id="@+id/tvName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/color_white_transparent"
+              android:textAlignment="center"
+              android:padding="@dimen/common_padding_min"
+              android:textAppearance="?attr/textAppearanceBody2"/>
+
+          <TextView
+              android:id="@+id/tvModel"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/color_white_transparent"
+              android:textAlignment="center"
+              android:padding="@dimen/common_padding_min"
+              android:textAppearance="?attr/textAppearanceBody2"/>
+
+          <TextView
+              android:id="@+id/tvPrice"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/color_white_transparent"
+              android:textAlignment="center"
+              android:padding="@dimen/common_padding_min"
+              android:textAppearance="?attr/textAppearanceBody2"/>
+
+
+      </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

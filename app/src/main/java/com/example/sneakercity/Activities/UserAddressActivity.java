@@ -1,0 +1,89 @@
+package com.example.sneakercity.Activities;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.sneakercity.Adapters.UserAddressAdapter;
+import com.example.sneakercity.Helpes.UtilsHelper;
+import com.example.sneakercity.Models.User;
+import com.example.sneakercity.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+public class UserAddressActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private UserAddressAdapter adapter;
+    private MaterialButton addUser;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_address);
+
+        setToolbar();
+        onInit();
+
+        UtilsHelper.getDatabase().child(UtilsHelper.getUserId()).child("userAddress").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final ArrayList<User> users = new ArrayList<>();
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    User post = dataSnapshot.getValue(User.class);
+                    post.setIdAddress(dataSnapshot.getKey());
+                    users.add(post);
+                }
+                adapter = new UserAddressAdapter(getApplicationContext(), users, R.layout.user_address_adapter, UserAddressActivity.this );
+                linearLayoutManager = new LinearLayoutManager(UserAddressActivity.this);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setHasFixedSize(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        addUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToUser();
+            }
+        });
+    }
+
+    private void setToolbar() {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getResources().getString(R.string.shipping_user_address_message));
+        setSupportActionBar(toolbar);
+    }
+
+    private void onInit() {
+        recyclerView = findViewById(R.id.recyclerView);
+        addUser = findViewById(R.id.btnAddUser);
+
+    }
+
+    public void goToUser(){
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
+    }
+
+
+}

@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">SneakerCity</string>
+    <string name="required_message">Requerido</string>
+    <string name="name_message">Nombre</string>
+    <string name="last_name_message">Apellido</string>
+    <string name="phone_message">Telefono</string>
+    <string name="email_message">Correo electronico</string>
+    <string name="password_message">Contraseña</string>
+    <string name="sign_in_message">Ingresar</string>
+    <string name="saved_message">Aceptar</string>
+
+    <string name="recover_password_message">Recuperar contraseña</string>
+    <string name="Create_account_message">Crear una cuenta</string>
+    <string name="username_password_message">Por favor entre su usuario y contraseña </string>
+    <string name="user_success_message">Usuario registrado con éxito</string>
+    <string name="user_failed_message">Autenticación fallida</string>
+
+    <string name="description_image_photo">Imagen del producto</string>
+    <string name="favorite_message">Favoritos</string>
+    <string name="search_message">Buscar</string>
+
+    <string name="shopping_cart_message">Carro de compras</string>
+    <string name="remove_message">Eliminar</string>
+
+    <string name="go_to_pay_message">COMPRAR AHORA</string>
+    <string name="add_to_cart_message">AGREGAR AL CARRO</string>
+    <string name="quantity_message">Cantidad</string>
+    <string name="detail_title_message">Detalles</string>
+    <string name="add_cart_message">Articulo agregado al carrito de compras correctamente</string>
+
+    <string name="article_message">Articulo</string>
+    <string name="subtotal_message">Subtotal</string>
+    <string name="shopping_message">Envio</string>
+    <string name="price_message">Precio</string>
+    <string name="total_message">Total</string>
+    <string name="complete_transition_message">Completar transaccion</string>
+    <string name="send_to_message">Enviar a</string>
+    <string name="go_to_address_message">Ir a dirección</string>
+    <string name="i_pay_with_message">Pago con</string>
+    <string name="select_a_payment_option_message">SELECCIONA UNA OPCIÓN DE PAGO</string>
+    <string name="make_payment_message">Realizar el pago</string>
+    <string name="payment_shipping_title">Pago Envío</string>
+
+    <string name="card_information_message">Información de la tarjeta</string>
+    <string name="edit_message">Editar</string>
+    <string name="add_payment_method_message">Añadir método de pago</string>
+    <string name="card_number_message">Número de tarjeta</string>
+    <string name="expiration_date_message">Fecha de caducidad</string>
+    <string name="security_code_message">Código de seguridad</string>
+    <string name="name_print_card_message">Nombre impreso en la tarjeta</string>
+    <string name="card_message">Tarjeta</string>
+    <string name="enter_card_number_message">Ingrese el número de tarjeta</string>
+    <string name="enter_expiration_date_message">Introduce la fecha de caducidad</string>
+    <string name="enter_security_code_message">Introduce el código de seguridad</string>
+    <string name="enter_name_printed_card_message">Ingrese el nombre impreso en la tarjeta</string>
+    <string name="information_saved_correctly_message">Información guardada correctamente</string>
+    <string name="save_for_future_purchases_message">Guardar para futuras compras</string>
+
+    <string name="click_add_invoice_address_message">Haga clic en sí para agregar la dirección de la factura</string>
+    <string name="billing_address_message">Añadir dirección de facturación</string>
+    <string name="yes_message">Si</string>
+    <string name="no_message">No</string>
+    <string name="way_pay_message">Metodo de pago</string>
+
+    <string name="country_message">Pais</string>
+    <string name="community_message">Comunidad</string>
+    <string name="city_message">Ciudad</string>
+    <string name="postal_code_message">Codigo postal</string>
+    <string name="address_message">Direccion</string>
+    <string name="address_2_message">Direccion 2</string>
+    <string name="optional_message">Opcional</string>
+    <string name="user_address_message">Dirección de usuario</string>
+    <string name="enter_address_message">Ingresa la dirección</string>
+    <string name="enter_phone_message">Ingresa el teléfono</string>
+    <string name="enter_zip_code_message">Ingresa tu código postal</string>
+    <string name="enter_city_message">Ingresa la ciudad</string>
+    <string name="enter_community_message">Ingresa la comunidad</string>
+    <string name="enter_country_message">Ingresa el país</string>
+    <string name="enter_last_name_message">Ingresa el apellido</string>
+    <string name="enter_name_message">Ingresa un nombre</string>
+    <string name="shipping_user_address_message">Dirección de envio del usuario </string>
+    <string name="shipping_invoice_address_message">Dirección de envio factura</string>
+    <string name="add_new_address_message">Agregar nueva dirección de usuario</string>
+    <string name="invoice_address_message">Dirección de factura</string>
+    <string name="add_new_billing_address_message">Add new billing address</string>
+
+</resources>

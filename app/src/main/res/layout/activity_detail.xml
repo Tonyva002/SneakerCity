@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Activities.HomeActivity">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_navigation_drawer"
+        app:menu="@menu/nav_options"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imgPhoto"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="@dimen/common_margin_middle"
+                android:layout_marginHorizontal="@dimen/common_margin_default"
+                android:background="@android:color/white"
+                android:contentDescription="@string/description_image_photo"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbFavorite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin_middle"
+                android:layout_marginEnd="@dimen/common_margin_default"
+                android:button="@drawable/states_cb_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/common_padding_default"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgPhoto">
+
+
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin_default"
+                android:background="@color/color_white_transparent"
+                android:padding="@dimen/common_padding_min"
+                android:textAppearance="?attr/textAppearanceBody2"/>
+
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin_default"
+                android:background="@color/color_white_transparent"
+                android:padding="@dimen/common_padding_min"
+                android:textAppearance="?attr/textAppearanceBody2"/>
+
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin_default"
+                android:background="@color/color_white_transparent"
+                android:padding="@dimen/common_padding_min"
+                android:textAppearance="?attr/textAppearanceBody2"/>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoToPay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_button_height"
+            android:layout_marginTop="@dimen/common_margin_middle"
+            android:layout_marginHorizontal="@dimen/common_margin_big"
+            android:text="@string/go_to_pay_message"
+            android:textColor="@color/red_color"
+            app:cornerRadius="@dimen/common_radius_middle"
+            android:backgroundTint="@color/browser_actions_bg_grey" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_button_height"
+            android:layout_marginTop="@dimen/common_margin_middle"
+            android:layout_marginHorizontal="@dimen/common_margin_big"
+            android:text="@string/add_to_cart_message"
+            app:cornerRadius="@dimen/common_radius_middle"
+            android:backgroundTint="@color/red_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_button_height"
+                    android:layout_marginTop="@dimen/common_margin_middle"
+                    android:text="-"
+                    android:textSize="@dimen/common_text_size_middle"
+                    app:cornerRadius="@dimen/common_radius_middle"
+                    android:backgroundTint="@color/red_color" />
+
+
+                <TextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_margin_middle"
+                    android:hint="@string/quantity_message"
+                    android:textAlignment="center"
+                    android:background="@color/color_white_transparent"
+                    android:padding="@dimen/common_padding_min"
+                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnIncrement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_button_height"
+                    android:layout_marginTop="@dimen/common_margin_middle"
+                    android:text="+"
+                    android:textSize="@dimen/common_text_size_middle"
+                    app:cornerRadius="@dimen/common_radius_middle"
+                    android:backgroundTint="@color/red_color" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

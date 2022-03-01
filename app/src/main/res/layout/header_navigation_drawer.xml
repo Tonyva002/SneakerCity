@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/common_margin_big"
+        android:layout_marginStart="@dimen/common_margin_default"
+        android:scaleType="fitStart"
+        android:src="@drawable/outline_person_black_24"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_margin_default"
+        android:layout_marginBottom="@dimen/common_margin_default"
+        android:text="Tony Vasquez"
+        android:textStyle="bold"
+        android:textAppearance="?attr/textAppearanceSearchResultSubtitle"
+        android:drawableRight="@drawable/outline_chevron_right_black_24"/>
+
+
+</LinearLayout>
