@@ -16,11 +16,12 @@
     <string name="user_failed_message">Autenticación fallida</string>
 
     <string name="description_image_photo">Imagen del producto</string>
-    <string name="favorite_message">Favoritos</string>
+    <string name="favorite_message">Favorito</string>
     <string name="search_message">Buscar</string>
 
     <string name="shopping_cart_message">Carro de compras</string>
     <string name="remove_message">Eliminar</string>
+    <string name="move_to_favorites_message">Move to favorites</string>
 
     <string name="go_to_pay_message">COMPRAR AHORA</string>
     <string name="add_to_cart_message">AGREGAR AL CARRO</string>
@@ -83,5 +84,19 @@
     <string name="add_new_address_message">Agregar nueva dirección de usuario</string>
     <string name="invoice_address_message">Dirección de factura</string>
     <string name="add_new_billing_address_message">Add new billing address</string>
+
+    <string name="start_message">Inicio</string>
+    <string name="journal_message">Journal</string>
+    <string name="my_sneaker_city_message">Mi Sneaker City</string>
+    <string name="jordan_message">Jordan</string>
+    <string name="nike_message">Nike</string>
+    <string name="adidas_message">Adidas</string>
+    <string name="women_message">Mujeres</string>
+    <string name="kids_message">Niños</string>
+    <string name="apparel_message">Vestir</string>
+    <string name="stadium_goods_message">Stadium Goods</string>
+    <string name="all_brands_message">Todas las marcas</string>
+    <string name="shop_by_message">Comprar por</string>
+
 
 </resources>

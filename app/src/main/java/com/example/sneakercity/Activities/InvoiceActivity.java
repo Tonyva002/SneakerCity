@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,7 +23,6 @@ public class InvoiceActivity extends AppCompatActivity {
     private Invoice mInvoice;
     private EditText name, country, community, city, postalCode, phone, address, address2;
     private MaterialButton save;
-    private Toolbar toolbar;
     private boolean isNew = true;
 
     @Override
@@ -42,6 +40,7 @@ public class InvoiceActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User post = snapshot.getValue(User.class);
+                    assert post != null;
                     name.setText(post.getName());
                     country.setText(post.getCountry());
                     community.setText(post.getCommunity());
@@ -60,12 +59,7 @@ public class InvoiceActivity extends AppCompatActivity {
             });
         }
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveInformation();
-            }
-        });
+        save.setOnClickListener(view -> saveInformation());
     }
 
     private void saveInformation(){
@@ -119,7 +113,7 @@ public class InvoiceActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.user_address_message);
         setSupportActionBar(toolbar);
     }

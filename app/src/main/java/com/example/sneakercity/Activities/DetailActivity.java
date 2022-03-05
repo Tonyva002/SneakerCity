@@ -6,13 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +37,6 @@ import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity  {
 
-    private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ImageView imgPhoto;
@@ -59,24 +58,14 @@ public class DetailActivity extends AppCompatActivity  {
         setupNavView();
 
 
-        addToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCart.saveToCart();
-                Toast toast = Toast.makeText(DetailActivity.this, R.string.add_cart_message, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0,0);
-                toast.show();
-            }
+        addToCart.setOnClickListener(view -> {
+            mCart.saveToCart();
+            Toast toast = Toast.makeText(DetailActivity.this, R.string.add_cart_message, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0,0);
+            toast.show();
         });
 
-        goToPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                goPaymentShipping();
-
-            }
-        });
+        goToPay.setOnClickListener(view -> goPaymentShipping());
 
         final String mIdProduct = getIntent().getStringExtra("value");
         UtilsHelper.getDatabase().child("product").child(mIdProduct).addValueEventListener(new ValueEventListener() {
@@ -99,6 +88,7 @@ public class DetailActivity extends AppCompatActivity  {
 
                         for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                             Cart post = dataSnapshot.getValue(Cart.class);
+                            assert post != null;
                             if (post.getId_product() != null){
                                 if (post.getId_product().equals(mIdProduct)){
                                     counter = post.getQuantity();
@@ -115,24 +105,14 @@ public class DetailActivity extends AppCompatActivity  {
                     }
                 });
 
-        increment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                incrementCounter();
-            }
-        });
+        increment.setOnClickListener(view -> incrementCounter());
 
-        decrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                decreaseCounter();
-            }
-        });
+        decrease.setOnClickListener(view -> decreaseCounter());
     }
 
     // Metodo para configurar la toolbar
     private void setToolbar(){
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.detail_title_message);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -176,6 +156,7 @@ public class DetailActivity extends AppCompatActivity  {
     }
 
 
+    @SuppressLint("DefaultLocale")
     private void onSetProduct(DataSnapshot snapshot) {
         product = snapshot.getValue(Product.class);
         Glide.with(getApplicationContext())
@@ -185,7 +166,7 @@ public class DetailActivity extends AppCompatActivity  {
                 .into(imgPhoto);
         description.setText(product.getDescription());
         name.setText(product.getName());
-        price.setText(String.valueOf("RD$ " + product.getPrice()));
+        price.setText(String.format("RD$ %d", product.getPrice()));
         product.setIdProduct(snapshot.getKey());
         mCart.setId_product(snapshot.getKey());
         priceToPay = product.getPrice();
@@ -227,6 +208,7 @@ public class DetailActivity extends AppCompatActivity  {
     }
 
     // Metodo para configurar las opciones del menu de opciones
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -243,64 +225,60 @@ public class DetailActivity extends AppCompatActivity  {
 
 
     // Metodo para configurar las opciones del navigation drawer
+    @SuppressLint("NonConstantResourceId")
     private void setupNavView(){
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        mNavigationView.setNavigationItemSelectedListener(item -> {
 
-                switch (item.getItemId()){
-                    case R.id.optionHome:
-                        goToHome();
-                        break;
+            switch (item.getItemId()){
+                case R.id.optionHome:
+                    goToHome();
+                    break;
 
-                    case R.id.optionJournal:
-
-                        break;
-
-                    case R.id.optionJordan:
-
-                        break;
-
-                    case R.id.optionNike:
-
-                        break;
-
-                    case R.id.optionYeezy:
-
-                        break;
-
-                    case R.id.optionAdidas:
-
-                        break;
-
-                    case R.id.optionWomen:
-
-                        break;
-
-                    case R.id.optionKids:
-
-                        break;
-
-                    case R.id.optionApparel:
-
-                        break;
-
-                    case R.id.optionStadium:
-
-                        break;
-
-                    case R.id.optionAllBrands:
-
-                        break;
-
-                    case R.id.optionShopBy:
-
-                        break;
+                case R.id.optionJournal:
 
 
-                }
-                return false;
+
+                case R.id.optionJordan:
+
+
+                case R.id.optionNike:
+
+
+
+                case R.id.optionYeezy:
+
+
+                case R.id.optionAdidas:
+
+
+
+                case R.id.optionWomen:
+
+
+
+                case R.id.optionKids:
+
+
+
+                case R.id.optionApparel:
+
+
+
+                case R.id.optionStadium:
+
+
+
+                case R.id.optionAllBrands:
+
+
+
+                case R.id.optionShopBy:
+
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + item.getItemId());
             }
+            return false;
         });
     }
 

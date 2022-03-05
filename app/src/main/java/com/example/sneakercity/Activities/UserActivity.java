@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,7 +22,6 @@ public class UserActivity extends AppCompatActivity {
     private User mUser;
     private EditText name, lastName, country, community, city, postalCode, phone, address, address2;
     private MaterialButton save;
-    private Toolbar toolbar;
     private boolean isNew = true;
             
 
@@ -42,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User post = snapshot.getValue(User.class);
+                    assert post != null;
                     name.setText(post.getName());
                     lastName.setText(post.getLastName());
                     country.setText(post.getCountry());
@@ -61,12 +60,7 @@ public class UserActivity extends AppCompatActivity {
             });
         }
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             saveInformation();
-            }
-        });
+        save.setOnClickListener(view -> saveInformation());
     }
 
     private void saveInformation(){
@@ -124,7 +118,7 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.user_address_message);
         setSupportActionBar(toolbar);
     }

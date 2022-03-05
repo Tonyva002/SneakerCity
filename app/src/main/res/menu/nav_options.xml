@@ -5,65 +5,65 @@
         <item
             android:id="@+id/optionHome"
             android:icon="@drawable/outline_home_black_18"
-            android:title="Inicio"/>
+            android:title="@string/start_message"/>
 
         <item
             android:id="@+id/optionJournal"
             android:icon="@drawable/outline_menu_book_black_18"
-            android:title="Journal"/>
+            android:title="@string/journal_message"/>
 
     </group>
-    <item android:title="My Sneaker City">
+    <item android:title="@string/my_sneaker_city_message">
         <menu>
     <item
         android:id="@+id/optionJordan"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Jordan"/>
+        android:title="@string/jordan_message"/>
 
     <item
         android:id="@+id/optionNike"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Nike"/>
+        android:title="@string/nike_message"/>
 
     <item
         android:id="@+id/optionYeezy"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Jordan"/>
+        android:title="@string/jordan_message"/>
 
     <item
         android:id="@+id/optionAdidas"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Adidas"/>
+        android:title="@string/adidas_message"/>
 
     <item
         android:id="@+id/optionWomen"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Women"/>
+        android:title="@string/women_message"/>
 
     <item
         android:id="@+id/optionKids"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Kids"/>
+        android:title="@string/kids_message"/>
 
     <item
         android:id="@+id/optionApparel"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Apparel"/>
+        android:title="@string/apparel_message"/>
 
     <item
         android:id="@+id/optionStadium"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Stadium Goods"/>
+        android:title="@string/stadium_goods_message"/>
 
     <item
         android:id="@+id/optionAllBrands"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="All Brands"/>
+        android:title="@string/all_brands_message"/>
 
     <item
         android:id="@+id/optionShopBy"
         android:icon="@drawable/outline_chevron_right_black_18"
-        android:title="Shop By"/>
+        android:title="@string/shop_by_message"/>
 
         </menu>
 

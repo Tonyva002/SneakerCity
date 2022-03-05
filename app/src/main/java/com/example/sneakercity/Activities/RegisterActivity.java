@@ -1,11 +1,9 @@
 package com.example.sneakercity.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -13,12 +11,11 @@ import com.example.sneakercity.Helpes.EventKeyboard.EventKeyboard;
 import com.example.sneakercity.Helpes.EventKeyboard.EventKeyboardInterface;
 import com.example.sneakercity.Helpes.UtilsHelper;
 import com.example.sneakercity.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity implements EventKeyboardInterface {
 
@@ -56,16 +53,11 @@ public class RegisterActivity extends AppCompatActivity implements EventKeyboard
     @Override
     protected void onStart() {
         super.onStart();
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registrarUsuario();
-            }
-        });
+        save.setOnClickListener(view -> registrarUsuario());
     }
 
     private void registrarUsuario() {
-        if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
+        if (Objects.requireNonNull(email.getText()).toString().equals("") || Objects.requireNonNull(password.getText()).toString().equals("")) {
 
             Toast toast = Toast.makeText(RegisterActivity.this, R.string.username_password_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
@@ -73,21 +65,18 @@ public class RegisterActivity extends AppCompatActivity implements EventKeyboard
 
         } else {
             mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                registerUser(name.getText().toString(), lastName.getText().toString(), phone.getText().toString());
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            registerUser(Objects.requireNonNull(name.getText()).toString(), Objects.requireNonNull(lastName.getText()).toString(), Objects.requireNonNull(phone.getText()).toString());
 
-                                Toast toast = Toast.makeText(RegisterActivity.this, R.string.user_success_message, Toast.LENGTH_LONG);
-                                toast.setGravity(Gravity.CENTER, 0, 0);
-                                toast.show();
-                            } else {
+                            Toast toast = Toast.makeText(RegisterActivity.this, R.string.user_success_message, Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        } else {
 
-                                Toast toast = Toast.makeText(RegisterActivity.this, R.string.user_failed_message, Toast.LENGTH_LONG);
-                                toast.setGravity(Gravity.CENTER, 0, 0);
-                                toast.show();
-                            }
+                            Toast toast = Toast.makeText(RegisterActivity.this, R.string.user_failed_message, Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
                         }
                     });
 

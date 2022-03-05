@@ -20,6 +20,7 @@
     <dimen name="common_radius_middle">24dp</dimen>
     <dimen name="common_item_card_height">150dp</dimen>
     <dimen name="common_button_height">60dp</dimen>
+    <dimen name="common_margin_middlex">32dp</dimen>
 
 
 </resources>

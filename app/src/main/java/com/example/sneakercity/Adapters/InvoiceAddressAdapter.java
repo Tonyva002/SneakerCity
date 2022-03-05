@@ -1,5 +1,6 @@
 package com.example.sneakercity.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +25,10 @@ import java.util.ArrayList;
 
 public class InvoiceAddressAdapter extends RecyclerView.Adapter<InvoiceAddressAdapter.ViewHolder> {
 
-    private Context context;
-    private ArrayList<Invoice> list;
-    private int layout;
-    private Activity activity;
+    private final Context context;
+    private final ArrayList<Invoice> list;
+    private final int layout;
+    private final Activity activity;
 
     public InvoiceAddressAdapter(Context context, ArrayList<Invoice> list, int layout, Activity activity){
         this.context = context;
@@ -45,32 +46,22 @@ public class InvoiceAddressAdapter extends RecyclerView.Adapter<InvoiceAddressAd
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.invoice.setText(new StringBuffer()
-                .append(list.get(position).getName()).append("\n")
-                .append(list.get(position).getAddress()).append("\n")
-                .append(list.get(position).getCountry()).append("\n")
-                .append(list.get(position).getCommunity()).append("\n")
-                .append(list.get(position).getCity()).append("\n")
-                .append(list.get(position).getPostalCode()).append("\n")
-                .append(list.get(position).getPhone()).toString());
+        holder.invoice.setText(list.get(position).getName() + "\n" +
+                list.get(position).getAddress() + "\n" +
+                list.get(position).getCountry() + "\n" +
+                list.get(position).getCommunity() + "\n" +
+                list.get(position).getCity() + "\n" +
+                list.get(position).getPostalCode() + "\n" +
+                list.get(position).getPhone());
 
 
-        holder.invoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToPaymentShipping(holder.getAbsoluteAdapterPosition());
-            }
-        });
+        holder.invoice.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
 
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToEditInvoice(list.get(holder.getAbsoluteAdapterPosition()).getIdInvoice());
-            }
-        });
+        holder.edit.setOnClickListener(view -> goToEditInvoice(list.get(holder.getAbsoluteAdapterPosition()).getIdInvoice()));
 
 
     }
@@ -98,10 +89,10 @@ public class InvoiceAddressAdapter extends RecyclerView.Adapter<InvoiceAddressAd
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView invoice;
-        private MaterialButton edit;
+        private final TextView invoice;
+        private final MaterialButton edit;
 
         public ViewHolder(@NonNull View itemView) {
 

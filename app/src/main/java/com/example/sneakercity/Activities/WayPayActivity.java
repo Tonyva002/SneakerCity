@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class WayPayActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Toolbar toolbar;
     private WayPayAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
     private MaterialButton wayPay;
@@ -46,6 +45,7 @@ public class WayPayActivity extends AppCompatActivity {
                         final ArrayList<Card> cards = new ArrayList<>();
                         for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                             Card post = dataSnapshot.getValue(Card.class);
+                            assert post != null;
                             post.setIdCard(dataSnapshot.getKey());
                             cards.add(post);
                         }
@@ -63,16 +63,11 @@ public class WayPayActivity extends AppCompatActivity {
                     }
                 });
 
-        wayPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToCard();
-            }
-        });
+        wayPay.setOnClickListener(view -> goToCard());
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.way_pay_message);
         setSupportActionBar(toolbar);
     }

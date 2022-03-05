@@ -10,16 +10,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.example.sneakercity.Adapters.CartAdapter;
-import com.example.sneakercity.Helpes.EventKeyboard.EventKeyboardInterface;
 import com.example.sneakercity.Helpes.UtilsHelper;
 import com.example.sneakercity.Models.Card;
 import com.example.sneakercity.Models.Cart;
@@ -38,9 +34,6 @@ import java.util.ArrayList;
 public class PaymentShippingActivity extends AppCompatActivity  {
 
     private RecyclerView recyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
-    private Toolbar toolbar;
-    private CartAdapter adapter;
     private TextView goToAddress, optionPayment, article, subtotalPrice,shoppingPrice, totalPrice;
     private MaterialButton makePayment;
     public static User mUser = null;
@@ -60,22 +53,9 @@ public class PaymentShippingActivity extends AppCompatActivity  {
         onValidateCart();
 
 
-        goToAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        goToAddress.setOnClickListener(view -> goToUserAddress());
 
-                goToUserAddress();
-
-            }
-        });
-
-        optionPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                goToOptionPayment();
-            }
-        });
+        optionPayment.setOnClickListener(view -> goToOptionPayment());
     }
 
 
@@ -86,7 +66,7 @@ public class PaymentShippingActivity extends AppCompatActivity  {
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.payment_shipping_title);
         setSupportActionBar(toolbar);
     }
@@ -106,32 +86,22 @@ public class PaymentShippingActivity extends AppCompatActivity  {
     }
 
     private void setAlertDialog() {
-        makePayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(PaymentShippingActivity.this);
-                LayoutInflater inflater = PaymentShippingActivity.this.getLayoutInflater();
-                builder.setTitle(R.string.billing_address_message)
-                        .setMessage(R.string.click_add_invoice_address_message)
-                        .setIcon(R.drawable.outline_shopping_cart_black_24)
-                        .setPositiveButton(R.string.yes_message, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+        makePayment.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PaymentShippingActivity.this);
+            builder.setTitle(R.string.billing_address_message)
+                    .setMessage(R.string.click_add_invoice_address_message)
+                    .setIcon(R.drawable.outline_shopping_cart_black_24)
+                    .setPositiveButton(R.string.yes_message, (dialogInterface, i) -> {
 
-                                Intent intent = new Intent(PaymentShippingActivity.this, InvoiceAddressActivity.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton(R.string.no_message, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(PaymentShippingActivity.this, InvoiceAddressActivity.class);
+                        startActivity(intent);
+                    })
+                    .setNegativeButton(R.string.no_message, (dialogInterface, i) -> {
 
-                            }
-                        });
+                    });
 
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
 
     }
@@ -170,12 +140,13 @@ public class PaymentShippingActivity extends AppCompatActivity  {
 
 
     // Metodo para pasarle la informacion a CartAdpter y rellenar las vistas
+    @SuppressLint("DefaultLocale")
     private void onCreateAdapter(ArrayList<Cart> carts) {
-        adapter = new CartAdapter(PaymentShippingActivity.this,carts, R.layout.cart_adapter);
-        mLinearLayoutManager = new LinearLayoutManager(PaymentShippingActivity.this);
+        CartAdapter adapter = new CartAdapter(PaymentShippingActivity.this, carts, R.layout.cart_adapter);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(PaymentShippingActivity.this);
         recyclerView.setLayoutManager(mLinearLayoutManager);
         recyclerView.setAdapter(adapter);
-        article.setText(String.format("%s (%s)", getResources().getString(R.string.article_message), String.valueOf(carts.size())));
+        article.setText(String.format("%s (%s)", getResources().getString(R.string.article_message), carts.size()));
         subtotalPrice.setText(String.format("RD$ %s", suma));
         shoppingPrice.setText(String.format("RD$ %d", shopping));
         totalPrice.setText(String.valueOf(suma + shopping));

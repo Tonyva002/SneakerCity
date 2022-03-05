@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.sneakercity.Adapters.UserAddressAdapter;
 import com.example.sneakercity.Helpes.UtilsHelper;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 
 public class UserAddressActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private UserAddressAdapter adapter;
@@ -44,6 +42,7 @@ public class UserAddressActivity extends AppCompatActivity {
                 final ArrayList<User> users = new ArrayList<>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     User post = dataSnapshot.getValue(User.class);
+                    assert post != null;
                     post.setIdAddress(dataSnapshot.getKey());
                     users.add(post);
                 }
@@ -60,16 +59,11 @@ public class UserAddressActivity extends AppCompatActivity {
             }
         });
 
-        addUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToUser();
-            }
-        });
+        addUser.setOnClickListener(view -> goToUser());
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.shipping_user_address_message));
         setSupportActionBar(toolbar);
     }

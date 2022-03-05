@@ -8,11 +8,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.sneakercity.Adapters.CartAdapter;
@@ -24,11 +24,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private CartAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerView mRecyclerView;
@@ -50,12 +50,14 @@ public class CartActivity extends AppCompatActivity {
         UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
                 .addValueEventListener(new ValueEventListener() {
 
+                    @SuppressLint("DefaultLocale")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         suma = 0;
                         ArrayList<Cart> carts = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Cart post = dataSnapshot.getValue(Cart.class);
+                            assert post != null;
                             suma += post.getTotalPrice();
                             carts.add(post);
                         }
@@ -65,10 +67,10 @@ public class CartActivity extends AppCompatActivity {
                         mRecyclerView.setLayoutManager(mLinearLayoutManager);
                         mRecyclerView.setAdapter(mAdapter);
                         mRecyclerView.setHasFixedSize(true);
-                        article.setText(getResources().getString(R.string.article_message) +" (" + String.valueOf(carts.size()) + ")");
+                        article.setText(MessageFormat.format("{0} ({1})", getResources().getString(R.string.article_message), String.valueOf(carts.size())));
                         subtotalPrice.setText(format("RD$ %s", suma));
                         shoppingPrice.setText(format("RD$ %d", shopping));
-                        totalPrice.setText(String.format("RD$ %s", String.valueOf(suma + shopping)));
+                        totalPrice.setText(String.format("RD$ %s", (suma + shopping)));
 
 
                     }
@@ -79,19 +81,12 @@ public class CartActivity extends AppCompatActivity {
                     }
                 });
 
-        CompleteTransation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                goToPaymentShipping();
-
-            }
-        });
+        CompleteTransation.setOnClickListener(view -> goToPaymentShipping());
     }
 
     // Metodo para configurar la toolbar
     public void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.shopping_cart_message));
         setSupportActionBar(toolbar);
 
@@ -118,12 +113,7 @@ public class CartActivity extends AppCompatActivity {
     // Metodo para configurar las opciones del menu de opciones
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-
-            case R.id.optionShoppingCart:
-
-                break;
-        }
+        item.getItemId();
         return super.onOptionsItemSelected(item);
     }
 

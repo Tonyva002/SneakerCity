@@ -1,5 +1,6 @@
 package com.example.sneakercity.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,15 @@ import com.example.sneakercity.Models.Product;
 import com.example.sneakercity.R;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private ArrayList<Product> products;
-    private OnItemClickListener listener;
-    private int layout;
-    private Context context;
+    private final ArrayList<Product> products;
+    private final OnItemClickListener listener;
+    private final int layout;
+    private final Context context;
+
 
     public ProductAdapter(Context context, ArrayList<Product> products,  int layout, OnItemClickListener listener){
 
@@ -44,6 +46,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return new ViewHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -55,7 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         holder.name.setText(products.get(position).getName());
         holder.model.setText(products.get(position).getModel());
-        holder.price.setText(String.valueOf("RD$ "+ products.get(position).getPrice()));
+        holder.price.setText(String.format("RD$ %d", products.get(position).getPrice()));
 
 
         holder.bind(products.get(position), listener);
@@ -69,8 +72,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView image;
-        public TextView name, model, price;
+        private ImageView image;
+        private TextView name, model, price;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -84,16 +87,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public void bind(final Product list, final OnItemClickListener listener){
 
-          itemView.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-
-                  listener.onItemClick(list, getAdapterPosition());
-
-              }
-          });
+          itemView.setOnClickListener(view -> listener.onItemClick(list,
+                  getAdapterPosition()));
         }
-
-
     }
 }

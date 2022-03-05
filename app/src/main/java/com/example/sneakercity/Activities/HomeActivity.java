@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,8 +16,6 @@ import android.view.MenuItem;
 
 import com.example.sneakercity.Adapters.ProductAdapter;
 import com.example.sneakercity.Helpes.UtilsHelper;
-import com.example.sneakercity.Interface.OnItemClickListener;
-import com.example.sneakercity.Models.Cart;
 import com.example.sneakercity.Models.Product;
 import com.example.sneakercity.R;
 import com.google.android.material.navigation.NavigationView;
@@ -30,7 +29,6 @@ import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
 
@@ -57,20 +55,13 @@ public class HomeActivity extends AppCompatActivity {
 
                     for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                         Product post = dataSnapshot.getValue(Product.class);
+                        assert post != null;
                         post.setIdProduct(dataSnapshot.getKey());
                         products.add(post);
 
                     }
 
-                mAdapter = new ProductAdapter(HomeActivity.this, products, R.layout.product_adapter, new OnItemClickListener() {
-                    @Override
-                    public void onItemClick(Product product, int position) {
-
-                        goToDetail(products.get(position).getIdProduct());
-
-                    }
-
-                });
+                mAdapter = new ProductAdapter(HomeActivity.this, products, R.layout.product_adapter, (product, position) -> goToDetail(products.get(position).getIdProduct()));
 
                 mGridLayoutManager = new GridLayoutManager(HomeActivity.this, 2);
                 mRecyclerView.setHasFixedSize(true);
@@ -89,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Metodo para configurar la toolbar
     private void setToolbar(){
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -111,6 +102,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
   // Metodo para configurar las opciones del menu de opciones
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -121,6 +113,8 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.optionShoppingCart:
                 goToCart();
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + item.getItemId());
         }
         return super.onOptionsItemSelected(item);
     }
@@ -128,64 +122,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Metodo para configurar las opciones del navigation drawer
     private void setupNavView(){
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.optionHome:
-                        goToHome();
-                        break;
-
-                    case R.id.optionJournal:
-
-                        break;
-
-                    case R.id.optionJordan:
-
-                        break;
-
-                    case R.id.optionNike:
-
-                        break;
-
-                    case R.id.optionYeezy:
-
-                        break;
-
-                    case R.id.optionAdidas:
-
-                        break;
-
-                    case R.id.optionWomen:
-
-                        break;
-
-                    case R.id.optionKids:
-
-                        break;
-
-                    case R.id.optionApparel:
-
-                        break;
-
-                    case R.id.optionStadium:
-
-                        break;
-
-                    case R.id.optionAllBrands:
-
-                        break;
-
-                    case R.id.optionShopBy:
-
-                        break;
-
-
-                }
-                return false;
-            }
-        });
+        mNavigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 
 
@@ -209,5 +146,44 @@ public class HomeActivity extends AppCompatActivity {
 
     private void onIntent(Intent intent){
         startActivity(intent);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    private boolean onNavigationItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.optionHome:
+                goToHome();
+                break;
+
+            case R.id.optionJournal:
+
+            case R.id.optionJordan:
+
+            case R.id.optionNike:
+
+            case R.id.optionAdidas:
+
+            case R.id.optionYeezy:
+
+            case R.id.optionWomen:
+
+            case R.id.optionKids:
+
+            case R.id.optionApparel:
+
+            case R.id.optionStadium:
+
+            case R.id.optionAllBrands:
+
+            case R.id.optionShopBy:
+
+                break;
+
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + item.getItemId());
+        }
+        return false;
     }
 }

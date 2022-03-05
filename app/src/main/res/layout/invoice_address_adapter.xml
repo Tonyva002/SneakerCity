@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/edit_message"
             android:backgroundTint="@color/red_color"
+            app:cornerRadius="@dimen/common_radius_middle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,6 +1,5 @@
 package com.example.sneakercity.Adapters;
 
-import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.util.Log;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.sneakercity.Helpes.UtilsHelper;
-import com.example.sneakercity.Interface.OnItemClickListener;
 import com.example.sneakercity.Models.Cart;
 import com.example.sneakercity.Models.Product;
 import com.example.sneakercity.R;
@@ -25,15 +23,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-   private  ArrayList<Cart> carts;
-   private  int layout;
-   private  Context context;
-   private  String TAG = "Consulta";
+   private final ArrayList<Cart> carts;
+   private final int layout;
+   private final Context context;
+   private final String TAG = "Consulta";
 
    public CartAdapter(Context context, ArrayList<Cart> carts, int layout){
        this.context = context;
@@ -57,6 +56,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Product post = snapshot.getValue(Product.class);
+                        assert post != null;
                         holder.model.setText(post.getModel());
                         Glide.with(context)
                                 .load(post.getImage())
@@ -72,15 +72,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
                     }
                 });
-        holder.remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             onDeleteFromCart(holder.getAbsoluteAdapterPosition());
-            }
-        });
+        holder.remove.setOnClickListener(view -> onDeleteFromCart(holder.getAbsoluteAdapterPosition()));
 
         holder.price.setText(String.format("RD$ %s", carts.get(position).getTotalPrice()));
-        holder.quantity.setText(context.getResources().getString(R.string.quantity_message) + " (" + carts.get(position).getQuantity()+ ")");
+        holder.quantity.setText(MessageFormat.format("{0} ({1})", context.getResources().getString(R.string.quantity_message), carts.get(position).getQuantity()));
 
 
 
@@ -97,6 +92,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                public void onDataChange(@NonNull DataSnapshot snapshot) {
                    for (DataSnapshot deleteSnapshot: snapshot.getChildren()){
                        Cart post = deleteSnapshot.getValue(Cart.class);
+                       assert post != null;
                        if (Objects.equals(post.getId_product(), mIdProduct)){
                            deleteSnapshot.getRef().removeValue();
                            break;
@@ -129,7 +125,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
        public ImageView image;
        public TextView model, price, quantity, remove, favorite;

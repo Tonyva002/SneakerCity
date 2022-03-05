@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class InvoiceAddressActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private InvoiceAddressAdapter adapter;
@@ -43,6 +42,7 @@ public class InvoiceAddressActivity extends AppCompatActivity {
                 final ArrayList<Invoice> invoices = new ArrayList<>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Invoice post = dataSnapshot.getValue(Invoice.class);
+                    assert post != null;
                     post.setIdInvoice(dataSnapshot.getKey());
                     invoices.add(post);
                 }
@@ -59,16 +59,11 @@ public class InvoiceAddressActivity extends AppCompatActivity {
             }
         });
 
-        addInvoiceAdrress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToInvoice();
-            }
-        });
+        addInvoiceAdrress.setOnClickListener(view -> goToInvoice());
     }
 
     private void setToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.shipping_invoice_address_message));
         setSupportActionBar(toolbar);
     }

@@ -24,10 +24,10 @@ import java.util.ArrayList;
 
 public class WayPayAdapter extends RecyclerView.Adapter<WayPayAdapter.ViewHolder>{
 
-    private ArrayList<Card> list;
-    private Context context;
-    private int layout;
-    private Activity activity;
+    private final ArrayList<Card> list;
+    private final Context context;
+    private final int layout;
+    private final Activity activity;
 
 public WayPayAdapter(Context context, ArrayList<Card> list, int layout, Activity activity){
     this.context = context;
@@ -41,7 +41,7 @@ public WayPayAdapter(Context context, ArrayList<Card> list, int layout, Activity
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
     View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
-        return new  ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -52,22 +52,9 @@ public WayPayAdapter(Context context, ArrayList<Card> list, int layout, Activity
     .append(list.get(position).getExpirationDate()).append("\n")
     .append(list.get(position).getNamePrintCard()));
 
-    holder.infoCard.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    holder.infoCard.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
 
-          goToPaymentShipping(holder.getAbsoluteAdapterPosition());
-        }
-    });
-
-    holder.edit.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-           goToEditCardInformation(list.get(holder.getAbsoluteAdapterPosition()).getIdCard());
-
-        }
-    });
+    holder.edit.setOnClickListener(view -> goToEditCardInformation(list.get(holder.getAbsoluteAdapterPosition()).getIdCard()));
 
     }
 
@@ -94,10 +81,10 @@ public WayPayAdapter(Context context, ArrayList<Card> list, int layout, Activity
     context.startActivity(intent);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
-    private TextView infoCard;
-    private MaterialButton edit;
+    private final TextView infoCard;
+    private final MaterialButton edit;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);

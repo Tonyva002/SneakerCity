@@ -1,5 +1,6 @@
 package com.example.sneakercity.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,10 +27,10 @@ import java.util.ArrayList;
 
 public class UserAddressAdapter extends RecyclerView.Adapter<UserAddressAdapter.ViewHolder> {
 
-    private ArrayList<User> list;
-    private Context context;
-    private int layout;
-    private Activity activity;
+    private final ArrayList<User> list;
+    private final Context context;
+    private final int layout;
+    private final Activity activity;
 
     public UserAddressAdapter(Context context, ArrayList<User> list, int layout, Activity activity){
         this.context = context;
@@ -45,32 +46,22 @@ public class UserAddressAdapter extends RecyclerView.Adapter<UserAddressAdapter.
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.user.setText(new StringBuffer()
-        .append(list.get(position).getName()).append(" ")
-        .append(list.get(position).getLastName()).append("\n")
-        .append(list.get(position).getAddress()).append("\n")
-        .append(list.get(position).getCountry()).append("\n")
-        .append(list.get(position).getCommunity()).append("\n")
-        .append(list.get(position).getCity()).append("\n")
-        .append(list.get(position).getPostalCode()).append("\n")
-        .append(list.get(position).getPhone()).toString());
+        holder.user.setText(list.get(position).getName() + " " +
+                list.get(position).getLastName() + "\n" +
+                list.get(position).getAddress() + "\n" +
+                list.get(position).getCountry() + "\n" +
+                list.get(position).getCommunity() + "\n" +
+                list.get(position).getCity() + "\n" +
+                list.get(position).getPostalCode() + "\n" +
+                list.get(position).getPhone());
 
-        holder.user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToPaymentShipping(holder.getAbsoluteAdapterPosition());
-            }
-        });
+        holder.user.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
 
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToEditUser(list.get(holder.getAbsoluteAdapterPosition()).getIdAddress());
-            }
-        });
+        holder.edit.setOnClickListener(view -> goToEditUser(list.get(holder.getAbsoluteAdapterPosition()).getIdAddress()));
 
     }
 
@@ -97,10 +88,10 @@ public class UserAddressAdapter extends RecyclerView.Adapter<UserAddressAdapter.
         activity.finish();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView user;
-        private MaterialButton edit;
+        private final TextView user;
+        private final MaterialButton edit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/common_padding_default">
+        android:paddingHorizontal="@dimen/common_padding_min"
+        android:paddingVertical="@dimen/common_padding_default">
 
         <ImageView
             android:id="@+id/imgCart"
@@ -28,17 +29,16 @@
             android:maxLines="2"
             android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintStart_toEndOf="@+id/imgCart"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/imgCart" />
 
 
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/common_margin_min"
             android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/tvModel" />
 
 
         <TextView
@@ -46,35 +46,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/common_margin_min"
-            android:layout_marginTop="@dimen/common_margin_default"
+            android:layout_marginTop="@dimen/common_margin_middlex"
             android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintStart_toEndOf="@+id/imgCart"
             app:layout_constraintTop_toBottomOf="@+id/tvModel" />
+
+
 
         <TextView
             android:id="@+id/tvRemove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_middle"
             android:layout_marginStart="@dimen/common_margin_min"
-            android:layout_marginTop="@dimen/common_margin_default"
             android:drawablePadding="@dimen/common_padding_min"
             android:text="@string/remove_message"
             android:textAppearance="?attr/textAppearanceBody2"
             app:drawableStartCompat="@drawable/outline_clear_black_18"
             app:layout_constraintStart_toEndOf="@+id/imgCart"
-            app:layout_constraintTop_toBottomOf="@+id/tvQuantity" />
+            app:layout_constraintBottom_toBottomOf="@id/imgCart" />
 
         <TextView
             android:id="@+id/tvFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin_default"
             android:drawablePadding="@dimen/common_padding_min"
-            android:text="@string/favorite_message"
+            android:text="@string/move_to_favorites_message"
             android:textAppearance="?attr/textAppearanceBody2"
             app:drawableStartCompat="@drawable/outline_favorite_border_black_18"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvQuantity" />
+            app:layout_constraintTop_toTopOf="@+id/tvRemove" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
