@@ -10,40 +10,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SneakerCity">
         <activity
-            android:name=".Activities.InvoiceAddressActivity"
+            android:name="app.ejemplo.sneakercity.Activities.InvoiceAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.UserActivity"
+            android:name="app.ejemplo.sneakercity.Activities.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.CardActivity"
+            android:name="app.ejemplo.sneakercity.Activities.CardActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.UserAddressActivity"
+            android:name="app.ejemplo.sneakercity.Activities.UserAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.InvoiceActivity"
+            android:name="app.ejemplo.sneakercity.Activities.InvoiceActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.WayPayActivity"
+            android:name="app.ejemplo.sneakercity.Activities.WayPayActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.PaymentShippingActivity"
+            android:name="app.ejemplo.sneakercity.Activities.PaymentShippingActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.DetailActivity"
+            android:name="app.ejemplo.sneakercity.Activities.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.CartActivity"
+            android:name="app.ejemplo.sneakercity.Activities.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name="app.ejemplo.sneakercity.Activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.RegisterActivity"
+            android:name="app.ejemplo.sneakercity.Activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name="app.ejemplo.sneakercity.Activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

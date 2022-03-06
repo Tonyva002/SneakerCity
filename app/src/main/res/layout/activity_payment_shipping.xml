@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PaymentShippingActivity">
+    tools:context="app.ejemplo.sneakercity.Activities.PaymentShippingActivity">
 
 
     <include android:id="@+id/toolbar"

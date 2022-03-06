@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LoginActivity">
+    tools:context="app.ejemplo.sneakercity.Activities.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/common_margin_middle"
                 android:hint="@string/password_message"
+                app:endIconMode="password_toggle"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText

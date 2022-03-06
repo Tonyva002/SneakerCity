@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "119175877227",
+    "firebase_url": "https://sneaker-44b0d-default-rtdb.firebaseio.com",
     "project_id": "sneaker-44b0d",
     "storage_bucket": "sneaker-44b0d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:119175877227:android:53beb5fff773ebc35f972e",
+        "mobilesdk_app_id": "1:119175877227:android:1c1757645a7865fb5f972e",
         "android_client_info": {
-          "package_name": "com.example.sneakercity"
+          "package_name": "app.ejemplo.sneakercity"
         }
       },
       "oauth_client": [
