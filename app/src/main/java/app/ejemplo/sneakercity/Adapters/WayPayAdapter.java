@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.ejemplo.sneakercity.Activities.CardActivity;
 import app.ejemplo.sneakercity.Activities.PaymentShippingActivity;
 import app.ejemplo.sneakercity.Models.Card;
-import com.example.sneakercity.R;
+import app.ejemplo.sneakercity.R;
 import com.google.android.material.button.MaterialButton;
 
 import org.parceler.Parcels;

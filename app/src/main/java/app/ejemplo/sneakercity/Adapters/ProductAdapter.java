@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import app.ejemplo.sneakercity.Interface.OnItemClickListener;
 import app.ejemplo.sneakercity.Models.Product;
-import com.example.sneakercity.R;
+import app.ejemplo.sneakercity.R;
 
 import java.util.ArrayList;
 

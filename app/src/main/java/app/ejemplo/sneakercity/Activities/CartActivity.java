@@ -18,7 +18,7 @@ import android.widget.TextView;
 import app.ejemplo.sneakercity.Adapters.CartAdapter;
 import app.ejemplo.sneakercity.Helpes.UtilsHelper;
 import app.ejemplo.sneakercity.Models.Cart;
-import com.example.sneakercity.R;
+import app.ejemplo.sneakercity.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

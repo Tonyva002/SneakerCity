@@ -12,7 +12,7 @@ import android.os.Bundle;
 import app.ejemplo.sneakercity.Adapters.UserAddressAdapter;
 import app.ejemplo.sneakercity.Helpes.UtilsHelper;
 import app.ejemplo.sneakercity.Models.User;
-import com.example.sneakercity.R;
+import app.ejemplo.sneakercity.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
