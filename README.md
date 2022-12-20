@@ -15,6 +15,8 @@ Install android studio
 - Step 3. Open it in Android Studio
 - Step 4. Create an emulator or connect your physical phone to the pc.
 - Step 5. Give it to run
+- Step 6. Register in the application
+
 
 ### Author
 
