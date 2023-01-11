@@ -64,7 +64,7 @@
             android:textAppearance="?attr/textAppearanceBody2"
             app:drawableStartCompat="@drawable/outline_clear_black_18"
             app:layout_constraintStart_toEndOf="@+id/imgCart"
-            app:layout_constraintBottom_toBottomOf="@id/imgCart" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgCart" />
 
         <TextView
             android:id="@+id/tvFavorite"

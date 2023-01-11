@@ -99,11 +99,6 @@
                 android:textSize="@dimen/common_text_size_default"
                 android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
 
-
-
-
-
-
         </LinearLayout>
 
 

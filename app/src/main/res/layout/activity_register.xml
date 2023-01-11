@@ -44,7 +44,6 @@
                 android:hint="@string/email_message"
                 app:helperText="@string/required_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
@@ -61,7 +60,6 @@
                 android:hint="@string/password_message"
                 app:helperText="@string/required_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
@@ -78,7 +76,6 @@
                 android:layout_marginTop="@dimen/common_margin_middle"
                 android:hint="@string/name_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"

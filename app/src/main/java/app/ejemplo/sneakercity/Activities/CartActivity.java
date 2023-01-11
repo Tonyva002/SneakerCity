@@ -90,6 +90,8 @@ public class CartActivity extends AppCompatActivity {
         toolbar.setTitle(getResources().getString(R.string.shopping_cart_message));
         setSupportActionBar(toolbar);
 
+
+
     }
 
     // Metodo para referenciar las vistas del layout
