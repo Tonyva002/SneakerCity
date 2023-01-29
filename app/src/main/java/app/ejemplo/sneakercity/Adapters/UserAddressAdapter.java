@@ -58,9 +58,9 @@ public class UserAddressAdapter extends RecyclerView.Adapter<UserAddressAdapter.
                 list.get(position).getPostalCode() + "\n" +
                 list.get(position).getPhone());
 
-        holder.user.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
+        holder.user.setOnClickListener(view -> goToPaymentShipping(holder.getAdapterPosition()));
 
-        holder.edit.setOnClickListener(view -> goToEditUser(list.get(holder.getAbsoluteAdapterPosition()).getIdAddress()));
+        holder.edit.setOnClickListener(view -> goToEditUser(list.get(holder.getAdapterPosition()).getIdAddress()));
 
     }
 

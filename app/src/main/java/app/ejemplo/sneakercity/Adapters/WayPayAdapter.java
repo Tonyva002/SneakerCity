@@ -52,9 +52,9 @@ public WayPayAdapter(Context context, ArrayList<Card> list, int layout, Activity
     .append(list.get(position).getExpirationDate()).append("\n")
     .append(list.get(position).getNamePrintCard()));
 
-    holder.infoCard.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
+    holder.infoCard.setOnClickListener(view -> goToPaymentShipping(holder.getAdapterPosition()));
 
-    holder.edit.setOnClickListener(view -> goToEditCardInformation(list.get(holder.getAbsoluteAdapterPosition()).getIdCard()));
+    holder.edit.setOnClickListener(view -> goToEditCardInformation(list.get(holder.getAdapterPosition()).getIdCard()));
 
     }
 

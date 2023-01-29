@@ -59,9 +59,9 @@ public class InvoiceAddressAdapter extends RecyclerView.Adapter<InvoiceAddressAd
                 list.get(position).getPhone());
 
 
-        holder.invoice.setOnClickListener(view -> goToPaymentShipping(holder.getAbsoluteAdapterPosition()));
+        holder.invoice.setOnClickListener(view -> goToPaymentShipping(holder.getAdapterPosition()));
 
-        holder.edit.setOnClickListener(view -> goToEditInvoice(list.get(holder.getAbsoluteAdapterPosition()).getIdInvoice()));
+        holder.edit.setOnClickListener(view -> goToEditInvoice(list.get(holder.getAdapterPosition()).getIdInvoice()));
 
 
     }
