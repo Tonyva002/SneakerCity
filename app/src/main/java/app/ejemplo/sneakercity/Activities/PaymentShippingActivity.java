@@ -109,11 +109,11 @@ public class PaymentShippingActivity extends AppCompatActivity  {
     private void onValidateCart() {
         Cart cart = Parcels.unwrap(getIntent().getParcelableExtra(DetailActivity.ONE_PRODUCT_KEY));
         if (cart == null){
-            onConnectToFirebaseCart(); // Llamada a metodo onConnectToFirebaseCart
+            onConnectToFirebaseCart(); // Llamada al metodo onConnectToFirebaseCart
         }else{
             ArrayList<Cart> carts = new ArrayList<>();
             carts.add(cart);
-            onCreateAdapter(carts); // Llamada a metodo onCreateAdapter
+            onCreateAdapter(carts); // Llamada al metodo onCreateAdapter
         }
         
     }
