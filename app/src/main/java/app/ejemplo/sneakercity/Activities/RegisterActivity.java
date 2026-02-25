@@ -1,9 +1,13 @@
 package app.ejemplo.sneakercity.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -11,6 +15,7 @@ import app.ejemplo.sneakercity.Helpes.EventKeyboard.EventKeyboard;
 import app.ejemplo.sneakercity.Helpes.EventKeyboard.EventKeyboardInterface;
 import app.ejemplo.sneakercity.Helpes.UtilsHelper;
 import app.ejemplo.sneakercity.R;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +33,13 @@ public class RegisterActivity extends AppCompatActivity implements EventKeyboard
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
         onInit();
     }
 
@@ -43,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity implements EventKeyboard
         phone.setOnEditorActionListener(mKeyboard);
     }
 
-    private void registerUser(String name, String lastName, String phone){
+    private void registerUser(String name, String lastName, String phone) {
         UtilsHelper.getDatabase().child("user").child(UtilsHelper.getUserId()).child("name").setValue(name);
         UtilsHelper.getDatabase().child("user").child(UtilsHelper.getUserId()).child("lastName").setValue(lastName);
         UtilsHelper.getDatabase().child("user").child(UtilsHelper.getUserId()).child("phone").setValue(phone);

@@ -5,8 +5,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Product {
 
-    private String name, image, model, idProduct, description;
-    private int price;
+    private String name, image, model, idProduct, description, color, brand, currency, state;
+    private int stock;
+    private double price, size_available;
 
     public Product(){
 
@@ -52,11 +53,59 @@ public class Product {
         this.description = description;
     }
 
-    public int getPrice() {
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getSize_available() {
+        return size_available;
+    }
+
+    public void setSize_available(double size_available) {
+        this.size_available = size_available;
     }
 }

@@ -23,7 +23,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnEdit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/common_button_height"
         android:text="@string/edit_message"
         android:backgroundTint="@color/red_color"
         app:cornerRadius="@dimen/common_radius_middle"

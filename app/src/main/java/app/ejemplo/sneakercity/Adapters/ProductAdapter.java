@@ -58,7 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         holder.name.setText(products.get(position).getName());
         holder.model.setText(products.get(position).getModel());
-        holder.price.setText(String.format("RD$ %d", products.get(position).getPrice()));
+        holder.price.setText(String.format(products.get(position).getCurrency() + " " + products.get(position).getPrice()));
 
 
         holder.bind(products.get(position), listener);

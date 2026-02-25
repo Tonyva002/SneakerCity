@@ -8,11 +8,14 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fillViewport="true"
         android:scrollbars="vertical"
@@ -178,9 +181,9 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:layout_marginBottom="@dimen/common_margin_bigx"
+                android:layout_height="@dimen/common_button_height"
+                android:layout_marginTop="@dimen/common_margin_middle"
+                android:layout_marginBottom="@dimen/common_margin_big"
                 android:text="@string/saved_message"
                 app:cornerRadius="@dimen/common_radius_middle"
                 android:backgroundTint="@color/red_color"/>

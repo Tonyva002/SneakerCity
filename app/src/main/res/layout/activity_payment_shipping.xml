@@ -1,191 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.ejemplo.sneakercity.Activities.PaymentShippingActivity">
+    tools:context=".Activities.PaymentShippingActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/llContainer"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:listitem="@layout/cart_adapter" />
 
 
-    <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_padding_default"
+        android:background="?android:attr/windowBackground"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="280dp"
-                tools:listitem="@layout/cart_adapter"
-                android:elevation="0dp"
-                android:clipToPadding="false"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:fillViewport="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recyclerView">
+        <TextView
+            android:id="@+id/tvSendTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_to_message"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/common_padding_default">
+        <TextView
+            android:id="@+id/tvGoToAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_to_address_message"
+            android:textColor="#2D31FA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvSendTo"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
+        <TextView
+            android:id="@+id/tvPayWith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            android:text="@string/i_pay_with_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSendTo" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvOptionPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_a_payment_option_message"
+            android:textColor="#FF5C8D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvPayWith"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
-            <TextView
-                android:id="@+id/tvSendTo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/send_to_message"
-                android:textAppearance="?attr/textAppearanceBody2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/common_margin_default"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@id/tvPayWith" />
 
-            <TextView
-                android:id="@+id/tvGoToAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/go_to_address_message"
-                android:textColor="#2D31FA"
-                android:textAppearance="?attr/textAppearanceBody2"/>
+        <TextView
+            android:id="@+id/tvArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            android:text="@string/article_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
 
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tvSubtotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvArticle" />
 
+        <TextView
+            android:id="@+id/tvShopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            android:text="@string/shopping_message"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticle" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvShoppingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/price"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvShopping" />
 
-            <TextView
-                android:id="@+id/tvPayWith"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/i_pay_with_message"
-                android:textAppearance="?attr/textAppearanceBody2"/>
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            android:text="@string/total_message"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvShopping" />
 
-            <TextView
-                android:id="@+id/tvOptionPayment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/select_a_payment_option_message"
-                android:textColor="#FF5C8D"
-                android:textAppearance="?attr/textAppearanceBody2"/>
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/price"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTotal" />
 
-            </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMakePayment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_button_height"
+            android:layout_marginTop="@dimen/common_margin_default"
+            android:text="@string/make_payment_message"
+            android:backgroundTint="@color/red_color"
+            app:cornerRadius="@dimen/common_radius_middle"
+            app:layout_constraintTop_toBottomOf="@id/tvTotal"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvArticle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/article_message"
-                android:textAppearance="?attr/textAppearanceBody2"/>
-
-                <TextView
-                    android:id="@+id/tvSubtotalPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/common_margin_default"
-                    android:hint="price"
-                    android:textAppearance="?attr/textAppearanceBody2"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvShopping"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/shopping_message"
-                android:textAppearance="?attr/textAppearanceBody2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSubtotal"/>
-
-            <TextView
-                android:id="@+id/tvShoppingPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:hint="price"
-                android:textAppearance="?attr/textAppearanceBody2"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTotal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:text="@string/total_message"
-                android:textAppearance="?attr/textAppearanceBody2"/>
-
-            <TextView
-                android:id="@+id/tvTotalPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margin_default"
-                android:hint="price"
-                android:textAppearance="?attr/textAppearanceBody2"/>
-
-            </LinearLayout>
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMakePayment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_button_height"
-                android:layout_marginTop="@dimen/common_margin_middle"
-                android:layout_marginHorizontal="@dimen/common_margin_big"
-                android:layout_marginBottom="@dimen/common_margin_bigx"
-                android:text="@string/make_payment_message"
-                app:cornerRadius="@dimen/common_radius_middle"
-                android:backgroundTint="@color/red_color"/>
-
-
-
-
-                </LinearLayout>
-
-            </ScrollView>
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

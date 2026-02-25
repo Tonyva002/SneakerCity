@@ -4,6 +4,7 @@
     <dimen name="common_margin_min">8dp</dimen>
     <dimen name="common_margin_middle">24dp</dimen>
     <dimen name="common_margin_default">16dp</dimen>
+    <dimen name="common_margin_large">32dp</dimen>
     <dimen name="common_margin_big">50dp</dimen>
     <dimen name="common_margin_bigx">80dp</dimen>
 

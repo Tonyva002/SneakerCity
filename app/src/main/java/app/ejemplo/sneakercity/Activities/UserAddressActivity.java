@@ -3,16 +3,21 @@ package app.ejemplo.sneakercity.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import app.ejemplo.sneakercity.Adapters.UserAddressAdapter;
 import app.ejemplo.sneakercity.Helpes.UtilsHelper;
 import app.ejemplo.sneakercity.Models.User;
 import app.ejemplo.sneakercity.R;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +38,13 @@ public class UserAddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_address);
 
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
         setToolbar();
         onInit();
 
@@ -40,13 +52,13 @@ public class UserAddressActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final ArrayList<User> users = new ArrayList<>();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User post = dataSnapshot.getValue(User.class);
                     assert post != null;
                     post.setIdAddress(dataSnapshot.getKey());
                     users.add(post);
                 }
-                adapter = new UserAddressAdapter(getApplicationContext(), users, R.layout.user_address_adapter, UserAddressActivity.this );
+                adapter = new UserAddressAdapter(getApplicationContext(), users, R.layout.user_address_adapter, UserAddressActivity.this);
                 linearLayoutManager = new LinearLayoutManager(UserAddressActivity.this);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setAdapter(adapter);
@@ -74,7 +86,7 @@ public class UserAddressActivity extends AppCompatActivity {
 
     }
 
-    public void goToUser(){
+    public void goToUser() {
         Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);
     }

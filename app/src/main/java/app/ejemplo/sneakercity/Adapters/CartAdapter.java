@@ -51,7 +51,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,  int position) {
-        UtilsHelper.getDatabase().child("product").child(carts.get(holder.getAdapterPosition()).getId_product())
+        UtilsHelper.getDatabase().child("products").child(carts.get(holder.getAdapterPosition()).getId_product())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -74,7 +74,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 });
         holder.remove.setOnClickListener(view -> onDeleteFromCart(holder.getAdapterPosition()));
 
-        holder.price.setText(String.format("RD$ %s", carts.get(position).getTotalPrice()));
+        holder.price.setText(String.format("US$ %s", carts.get(position).getTotalPrice()));
         holder.quantity.setText(MessageFormat.format("{0} ({1})", context.getResources().getString(R.string.quantity_message), carts.get(position).getQuantity()));
 
 
@@ -111,7 +111,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
            Cart mCart = carts.get(position);
            mCart.setQuantity(quantity - 1);
            mCart.setTotalPrice(mCart.getQuantity()*mCart.getPrice());
-           mCart.descrementToCart();
+           mCart.decrementToCart();
 
        }
     }

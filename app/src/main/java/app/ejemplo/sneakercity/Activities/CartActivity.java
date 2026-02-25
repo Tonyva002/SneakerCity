@@ -1,10 +1,11 @@
 package app.ejemplo.sneakercity.Activities;
 
-import static java.lang.String.format;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import app.ejemplo.sneakercity.Adapters.CartAdapter;
@@ -33,14 +35,23 @@ public class CartActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerView mRecyclerView;
     public static double suma = 0;
-    public static final int shopping = 200;
+    public static final int shopping = 15;
     private TextView article, subtotalPrice, shoppingPrice, totalPrice;
-    private MaterialButton CompleteTransation;
+    private MaterialButton CompleteTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+
 
         setToolbar();
         onInit();
@@ -57,7 +68,7 @@ public class CartActivity extends AppCompatActivity {
                         ArrayList<Cart> carts = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Cart post = dataSnapshot.getValue(Cart.class);
-                            assert post != null;
+                            if (post == null) return;
                             suma += post.getTotalPrice();
                             carts.add(post);
                         }
@@ -68,9 +79,22 @@ public class CartActivity extends AppCompatActivity {
                         mRecyclerView.setAdapter(mAdapter);
                         mRecyclerView.setHasFixedSize(true);
                         article.setText(MessageFormat.format("{0} ({1})", getResources().getString(R.string.article_message), String.valueOf(carts.size())));
-                        subtotalPrice.setText(format("RD$ %s", suma));
-                        shoppingPrice.setText(format("RD$ %d", shopping));
-                        totalPrice.setText(String.format("RD$ %s", (suma + shopping)));
+
+                        if (!carts.isEmpty()) {
+
+                            String currency = carts.get(0).getCurrency();
+
+                            subtotalPrice.setText(String.format("%s %s", currency, suma));
+                            shoppingPrice.setText(String.format("%s %d", currency, shopping));
+                            totalPrice.setText(String.format("%s %s", currency, suma + shopping));
+
+                        } else {
+
+                            subtotalPrice.setText("0");
+                            shoppingPrice.setText("0");
+                            totalPrice.setText("0");
+
+                        }
 
 
                     }
@@ -81,7 +105,7 @@ public class CartActivity extends AppCompatActivity {
                     }
                 });
 
-        CompleteTransation.setOnClickListener(view -> goToPaymentShipping());
+        CompleteTransaction.setOnClickListener(view -> goToPaymentShipping());
     }
 
     // Metodo para configurar la toolbar
@@ -101,7 +125,7 @@ public class CartActivity extends AppCompatActivity {
         subtotalPrice = findViewById(R.id.tvSubtotalPrice);
         shoppingPrice = findViewById(R.id.tvShoppingPrice);
         totalPrice = findViewById(R.id.tvTotalPrice);
-        CompleteTransation = findViewById(R.id.btnCompleteTransation);
+        CompleteTransaction = findViewById(R.id.btnCompleteTransaction);
 
     }
 

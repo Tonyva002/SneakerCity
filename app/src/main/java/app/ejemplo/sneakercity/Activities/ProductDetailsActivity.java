@@ -3,7 +3,10 @@ package app.ejemplo.sneakercity.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
@@ -14,6 +17,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +39,7 @@ import org.parceler.Parcels;
 
 import java.util.Objects;
 
-public class DetailActivity extends AppCompatActivity  {
+public class ProductDetailsActivity extends AppCompatActivity  {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -51,7 +55,14 @@ public class DetailActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_product_details);
+
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         setToolbar();
         onInit();
@@ -60,7 +71,7 @@ public class DetailActivity extends AppCompatActivity  {
 
         addToCart.setOnClickListener(view -> {
             mCart.saveToCart();
-            Toast toast = Toast.makeText(DetailActivity.this, R.string.add_cart_message, Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(ProductDetailsActivity.this, R.string.add_cart_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0,0);
             toast.show();
         });
@@ -68,7 +79,14 @@ public class DetailActivity extends AppCompatActivity  {
         goToPay.setOnClickListener(view -> goPaymentShipping());
 
         final String mIdProduct = getIntent().getStringExtra("value");
-        UtilsHelper.getDatabase().child("product").child(mIdProduct).addValueEventListener(new ValueEventListener() {
+
+        if (mIdProduct == null) {
+            Toast.makeText(this, "ID de producto null", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        UtilsHelper.getDatabase().child("products").child(mIdProduct).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 onSetProduct(snapshot);
@@ -80,7 +98,7 @@ public class DetailActivity extends AppCompatActivity  {
             }
         });
 
-        // Muestra el producto con la cantidad ya existente en el carrito de compras
+        // Muestra el producto con la cantidad existente en el carrito de compras
         UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -135,7 +153,7 @@ public class DetailActivity extends AppCompatActivity  {
     }
 
 
-    // Metodo para navegar a pago y envio
+    // Metodo para navegar a pago y envío
     private void goPaymentShipping() {
         Intent intent = new Intent(this, PaymentShippingActivity.class);
         Parcelable cart = Parcels.wrap(onCreateCartForProduct());
@@ -151,6 +169,7 @@ public class DetailActivity extends AppCompatActivity  {
         cart.setId_user(FirebaseAuth.getInstance().getUid());
         cart.setTotalPrice(priceToPay*counter);
         cart.setQuantity(counter);
+        cart.setCurrency(product.getCurrency());
 
         return cart;
     }
@@ -166,9 +185,13 @@ public class DetailActivity extends AppCompatActivity  {
                 .into(imgPhoto);
         description.setText(product.getDescription());
         name.setText(product.getName());
-        price.setText(String.format("RD$ %d", product.getPrice()));
+        price.setText(String.format(product.getCurrency() + " " + product.getPrice()));
         product.setIdProduct(snapshot.getKey());
+
         mCart.setId_product(snapshot.getKey());
+        mCart.setPrice(product.getPrice());
+        mCart.setCurrency(product.getCurrency());
+        mCart.setId_user(FirebaseAuth.getInstance().getUid());
         priceToPay = product.getPrice();
         showResult();
 
@@ -290,7 +313,7 @@ public class DetailActivity extends AppCompatActivity  {
 
     // Metodo para navegar a Home Activity
     private void goToHome() {
-        onIntent(new Intent(this, HomeActivity.class));
+        onIntent(new Intent(this, ProductsActivity.class));
     }
 
     private void onIntent(Intent intent){

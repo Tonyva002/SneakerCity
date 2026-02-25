@@ -30,13 +30,13 @@
             android:name="app.ejemplo.sneakercity.Activities.PaymentShippingActivity"
             android:exported="false" />
         <activity
-            android:name="app.ejemplo.sneakercity.Activities.DetailActivity"
+            android:name="app.ejemplo.sneakercity.Activities.ProductDetailsActivity"
             android:exported="false" />
         <activity
             android:name="app.ejemplo.sneakercity.Activities.CartActivity"
             android:exported="false" />
         <activity
-            android:name="app.ejemplo.sneakercity.Activities.HomeActivity"
+            android:name="app.ejemplo.sneakercity.Activities.ProductsActivity"
             android:exported="false" />
         <activity
             android:name="app.ejemplo.sneakercity.Activities.RegisterActivity"

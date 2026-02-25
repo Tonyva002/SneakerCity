@@ -7,12 +7,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import app.ejemplo.sneakercity.Adapters.CartAdapter;
@@ -26,6 +32,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
+import android.view.View;
 
 import org.parceler.Parcels;
 
@@ -46,6 +57,14 @@ public class PaymentShippingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_shipping);
+
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
 
         onInit();
         setToolbar();
@@ -107,7 +126,7 @@ public class PaymentShippingActivity extends AppCompatActivity  {
     }
 
     private void onValidateCart() {
-        Cart cart = Parcels.unwrap(getIntent().getParcelableExtra(DetailActivity.ONE_PRODUCT_KEY));
+        Cart cart = Parcels.unwrap(getIntent().getParcelableExtra(ProductDetailsActivity.ONE_PRODUCT_KEY));
         if (cart == null){
             onConnectToFirebaseCart(); // Llamada al metodo onConnectToFirebaseCart
         }else{
@@ -147,9 +166,22 @@ public class PaymentShippingActivity extends AppCompatActivity  {
         recyclerView.setLayoutManager(mLinearLayoutManager);
         recyclerView.setAdapter(adapter);
         article.setText(String.format("%s (%s)", getResources().getString(R.string.article_message), carts.size()));
-        subtotalPrice.setText(String.format("RD$ %s", suma));
-        shoppingPrice.setText(String.format("RD$ %d", shopping));
-        totalPrice.setText(String.valueOf(suma + shopping));
+
+        if (!carts.isEmpty()) {
+
+            String currency = carts.get(0).getCurrency();
+
+            subtotalPrice.setText(String.format("%s %s", currency, suma));
+            shoppingPrice.setText(String.format("%s %d", currency, shopping));
+            totalPrice.setText(String.format("%s %s", currency, suma + shopping));
+
+        } else {
+
+            subtotalPrice.setText("0");
+            shoppingPrice.setText("0");
+            totalPrice.setText("0");
+
+        }
 
     }
 

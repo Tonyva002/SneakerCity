@@ -7,32 +7,34 @@
     tools:context="app.ejemplo.sneakercity.Activities.WayPayActivity">
 
     <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/common_margin_middle"
-        android:layout_marginBottom="@dimen/common_margin_bigx"
+        android:layout_marginHorizontal="@dimen/common_margin_default"
         tools:listitem="@layout/way_pay_adapter"
         android:elevation="0dp"
         android:clipToPadding="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnWayPay"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnWayPay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_button_height"
         android:layout_marginTop="@dimen/common_margin_default"
-        android:layout_marginHorizontal="@dimen/common_margin_big"
+        android:layout_marginHorizontal="@dimen/common_margin_default"
         android:text="@string/add_payment_method_message"
         android:backgroundTint="@color/red_color"
         app:cornerRadius="@dimen/common_radius_middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

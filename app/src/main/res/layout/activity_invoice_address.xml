@@ -7,33 +7,34 @@
     tools:context="app.ejemplo.sneakercity.Activities.InvoiceAddressActivity">
 
     <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/common_margin_middle"
-        android:layout_marginBottom="@dimen/common_margin_bigx"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         tools:listitem="@layout/invoice_address_adapter"
+        android:layout_marginHorizontal="@dimen/common_margin_default"
         android:elevation="0dp"
         android:clipToPadding="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddInvoiceAddress"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddInvoiceAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_button_height"
         android:layout_marginTop="@dimen/common_margin_default"
-        android:layout_marginHorizontal="@dimen/common_margin_big"
+        android:layout_marginHorizontal="@dimen/common_margin_default"
         android:text="@string/add_new_billing_address_message"
         android:backgroundTint="@color/red_color"
         app:cornerRadius="@dimen/common_radius_middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

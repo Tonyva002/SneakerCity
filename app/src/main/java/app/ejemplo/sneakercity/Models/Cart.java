@@ -7,7 +7,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Cart {
 
-    private String id_product, id_user;
+    private String id_product, id_user, currency;
     private double price, totalPrice;
     private int quantity;
 
@@ -55,21 +55,37 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public void saveToCart(){
-        UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
-                .child(id_product).child("id_user").setValue(UtilsHelper.getUserId());
-        UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
-                .child(id_product).child("id_product").setValue(id_product);
-        UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
-                .child(id_product).child("quantity").setValue(quantity);
-        UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
-                .child(id_product).child("price").setValue(price);
-        UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
-                .child(id_product).child("totalPrice").setValue(totalPrice);
-
+    public String getCurrency() {
+        return currency;
     }
 
-    public void descrementToCart(){
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+
+    public void saveToCart(){
+
+        // Asignar usuario automáticamente
+        this.id_user = UtilsHelper.getUserId();
+
+        // Validar moneda (por defecto USD si viene null)
+        if (this.currency == null || this.currency.isEmpty()) {
+            this.currency = "USD";
+        }
+
+        // Calcular total automáticamente
+        this.totalPrice = this.price * this.quantity;
+
+        // Guardar el objeto en Firebase
+        UtilsHelper.getDatabase()
+                .child("cart")
+                .child(this.id_user)
+                .child(this.id_product)
+                .setValue(this);
+    }
+
+    public void decrementToCart(){
         UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())
                 .child(id_product).child("quantity").setValue(quantity);
         UtilsHelper.getDatabase().child("cart").child(UtilsHelper.getUserId())

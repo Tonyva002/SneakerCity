@@ -3,7 +3,10 @@ package app.ejemplo.sneakercity.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import app.ejemplo.sneakercity.Adapters.ProductAdapter;
 import app.ejemplo.sneakercity.Helpes.UtilsHelper;
@@ -29,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -42,7 +46,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_products);
+
+        View mainView = findViewById(android.R.id.content); // O el ID de tu ConstraintLayout raíz
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         setToolbar();
         onInit();
@@ -50,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        UtilsHelper.getDatabase().child("product").addValueEventListener(new ValueEventListener() {
+        UtilsHelper.getDatabase().child("products").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final ArrayList<Product> products = new ArrayList<>();
@@ -63,9 +74,9 @@ public class HomeActivity extends AppCompatActivity {
 
                     }
 
-                mAdapter = new ProductAdapter(HomeActivity.this, products, R.layout.product_adapter, (product, position) -> goToDetail(products.get(position).getIdProduct()));
+                mAdapter = new ProductAdapter(ProductsActivity.this, products, R.layout.product_adapter, (product, position) -> goToDetail(products.get(position).getIdProduct()));
 
-                mGridLayoutManager = new GridLayoutManager(HomeActivity.this, 2);
+                mGridLayoutManager = new GridLayoutManager(ProductsActivity.this, 2);
                 mRecyclerView.setHasFixedSize(true);
                 mRecyclerView.setLayoutManager(mGridLayoutManager);
                 mRecyclerView.setAdapter(mAdapter);
@@ -130,7 +141,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Metodo para navegar a detail activity
     private void goToDetail(String key) {
-        Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra("value", key);
         onIntent(intent);
     }
@@ -143,7 +154,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Metodo para navegar a Home Activity
     private void goToHome() {
-        onIntent(new Intent(this, HomeActivity.class));
+        onIntent(new Intent(this, ProductsActivity.class));
     }
 
     private void onIntent(Intent intent){
