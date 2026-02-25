@@ -59,7 +59,7 @@ Install android studio
 ![Screen 9](https://github.com/user-attachments/assets/52c6f379-3316-4795-b515-55e554824093)
 
 ### 10. Pantalla de pago y envio con direccion y metodo de pago
-![Screen 10](<https://github.com/user-attachments/assets/bbf53181-385e-4702-9ed4-a44fd79d233f)
+![Screen 10](https://github.com/user-attachments/assets/bbf53181-385e-4702-9ed4-a44fd79d233f)
 
 ### 11. Opcional agregar direccion de factura
 ![Screen 11](https://github.com/user-attachments/assets/586729cc-d4b3-4b7b-ad5f-904420b28bcd)
