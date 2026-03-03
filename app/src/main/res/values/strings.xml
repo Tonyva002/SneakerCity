@@ -15,7 +15,7 @@
     <string name="user_success_message">Usuario registrado con éxito</string>
     <string name="user_failed_message">Autenticación fallida</string>
     <string name="user_image">Imagen del usuario</string>
-    <string name="sign_in_message">Entrar</string>
+    <string name="sign_in_message">Ingresar</string>
 
     <string name="description_image_photo">Imagen del producto</string>
     <string name="favorite_message">Favorito</string>
