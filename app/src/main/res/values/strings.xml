@@ -6,7 +6,7 @@
     <string name="phone_message">Telefono</string>
     <string name="email_message">Correo electronico</string>
     <string name="password_message">Contraseña</string>
-    <string name="sign_in_message">Registro</string>
+    <string name="register_title">Registro</string>
     <string name="saved_message">Aceptar</string>
 
     <string name="recover_password_message">Recuperar contraseña</string>
@@ -14,6 +14,8 @@
     <string name="username_password_message">Por favor entre su usuario y contraseña </string>
     <string name="user_success_message">Usuario registrado con éxito</string>
     <string name="user_failed_message">Autenticación fallida</string>
+    <string name="user_image">Imagen del usuario</string>
+    <string name="sign_in_message">Entrar</string>
 
     <string name="description_image_photo">Imagen del producto</string>
     <string name="favorite_message">Favorito</string>

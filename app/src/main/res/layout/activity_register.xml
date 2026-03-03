@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/common_margin_big"
                 android:layout_marginHorizontal="@dimen/common_margin_big"
-                android:text="@string/sign_in_message"
+                android:text="@string/register_title"
                 android:textStyle="bold"
                 android:textColor="@color/red_color"
                 android:textSize="@dimen/common_text_size_middle"

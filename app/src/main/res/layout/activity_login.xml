@@ -30,6 +30,7 @@
                     android:layout_height="@dimen/common_image_size_default"
                     android:layout_marginTop="@dimen/common_margin_bigx"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/user_image"
                     android:src="@drawable/outline_person_black_48"/>
 
 
